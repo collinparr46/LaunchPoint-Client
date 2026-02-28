@@ -7,12 +7,14 @@ import {
   Headphones,
 } from "lucide-react";
 import { RocketBackground } from "@/components/rocket-background";
+import { StarField } from "@/components/star-field";
 
 const navLinks = [
   { label: "Services", href: "#services" },
   { label: "Work", href: "#work" },
   { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Testimonials", href: "#testimonials" },
+  { label: "Book", href: "#book" },
 ];
 
 const services = [
@@ -66,6 +68,7 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 export default function Home() {
   return (
     <div className="relative min-h-screen bg-[#0a0a0a] text-white">
+      <StarField />
       <RocketBackground />
       <div className="relative z-10">
         {/* Navbar */}
@@ -89,7 +92,7 @@ export default function Home() {
               ))}
             </div>
             <a
-              href="#contact"
+              href="#book"
               className="rounded border border-white/20 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:border-white/40 hover:bg-white/5"
             >
               Schedule a Consult
@@ -115,12 +118,10 @@ export default function Home() {
               We Build Websites That Work As Hard As You Do
             </h1>
             <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-white/70 sm:text-xl">
-              Clean, modern websites and web apps for small businesses in Tulsa
-              and beyond. No templates, no fluff. Simply strategic design and
-              code that delivers bespoke results.
+              Clean, custom websites and web apps for small businesses. Built from scratch, designed with purpose.
             </p>
             <a
-              href="#contact"
+              href="#book"
               className="mt-10 inline-block rounded bg-white px-8 py-4 text-sm font-semibold text-[#0a0a0a] transition-opacity hover:opacity-90"
             >
               Schedule a Consult
@@ -163,6 +164,56 @@ export default function Home() {
                   </div>
                 );
               })}
+            </div>
+          </div>
+        </section>
+
+        {/* How It Works */}
+        <section
+          id="process"
+          className="border-t border-white/5 py-28 px-6 lg:px-8"
+        >
+          <div className="mx-auto max-w-7xl">
+            <div className="mx-auto max-w-2xl text-center">
+              <SectionLabel>THE PROCESS</SectionLabel>
+              <h2 className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
+                From Idea to Launch in Weeks, Not Months
+              </h2>
+            </div>
+            <div className="mt-20 grid gap-12 md:grid-cols-3">
+              <div className="relative rounded-2xl border border-white/5 bg-white/[0.02] p-8 text-center">
+                <span className="font-display text-6xl font-bold text-white/20 sm:text-7xl">
+                  1
+                </span>
+                <h3 className="mt-4 font-display text-xl font-semibold text-white">
+                  Free Consult
+                </h3>
+                <p className="mt-4 leading-relaxed text-white/65">
+                  We learn your business, goals, and vision in a 30-minute call.
+                </p>
+              </div>
+              <div className="relative rounded-2xl border border-white/5 bg-white/[0.02] p-8 text-center">
+                <span className="font-display text-6xl font-bold text-white/20 sm:text-7xl">
+                  2
+                </span>
+                <h3 className="mt-4 font-display text-xl font-semibold text-white">
+                  Design & Build
+                </h3>
+                <p className="mt-4 leading-relaxed text-white/65">
+                  We get to work. You get updates throughout, not just at the end.
+                </p>
+              </div>
+              <div className="relative rounded-2xl border border-white/5 bg-white/[0.02] p-8 text-center">
+                <span className="font-display text-6xl font-bold text-white/20 sm:text-7xl">
+                  3
+                </span>
+                <h3 className="mt-4 font-display text-xl font-semibold text-white">
+                  Launch & Support
+                </h3>
+                <p className="mt-4 leading-relaxed text-white/65">
+                  Your site goes live and we stick around to make sure it performs.
+                </p>
+              </div>
             </div>
           </div>
         </section>
@@ -223,27 +274,93 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Contact / CTA */}
+        {/* Testimonials */}
         <section
-          id="contact"
+          id="testimonials"
           className="border-t border-white/5 py-28 px-6 lg:px-8"
         >
-          <div className="mx-auto max-w-3xl text-center">
-            <SectionLabel>GET IN TOUCH</SectionLabel>
-            <h2 className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
-              Ready to Launch?
-            </h2>
-            <p className="mt-6 text-lg leading-relaxed text-white/70">
-              Tell us about your project. We&apos;ll reply within 24 hours to
-              schedule a free consultation, so you leave with a clear path
-              forward.
-            </p>
-            <a
-              href="mailto:hello@launchpoint.com?subject=Consultation%20Request"
-              className="mt-10 inline-block rounded border border-white/20 px-8 py-4 text-sm font-semibold text-white transition-colors hover:border-white/40 hover:bg-white/5"
-            >
-              Schedule a Consult
-            </a>
+          <div className="mx-auto max-w-7xl">
+            <div className="mx-auto max-w-2xl text-center">
+              <SectionLabel>CLIENT LOVE</SectionLabel>
+              <h2 className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
+                What Our Clients Say
+              </h2>
+            </div>
+            <div className="mt-20 grid gap-8 md:grid-cols-3">
+              <div className="rounded-2xl border border-white/5 bg-white/[0.02] p-8">
+                <div className="mb-4 flex gap-0.5 text-amber-400">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <span key={i} className="text-lg">
+                      ★
+                    </span>
+                  ))}
+                </div>
+                <p className="leading-relaxed text-white/80">
+                  &ldquo;LaunchPoint built our eCommerce store in under 3 weeks. Sales started coming in on day one.&rdquo;
+                </p>
+                <p className="mt-5 text-sm font-medium text-white/90">
+                  Marcus T.
+                </p>
+                <p className="text-sm text-white/50">Tulsa Outfitters</p>
+              </div>
+              <div className="rounded-2xl border border-white/5 bg-white/[0.02] p-8">
+                <div className="mb-4 flex gap-0.5 text-amber-400">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <span key={i} className="text-lg">
+                      ★
+                    </span>
+                  ))}
+                </div>
+                <p className="leading-relaxed text-white/80">
+                  &ldquo;Our portfolio site went from embarrassing to impressive overnight. Clients reach out to us now instead of the other way around.&rdquo;
+                </p>
+                <p className="mt-5 text-sm font-medium text-white/90">
+                  Sierra M.
+                </p>
+                <p className="text-sm text-white/50">Freelance Photographer</p>
+              </div>
+              <div className="rounded-2xl border border-white/5 bg-white/[0.02] p-8">
+                <div className="mb-4 flex gap-0.5 text-amber-400">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <span key={i} className="text-lg">
+                      ★
+                    </span>
+                  ))}
+                </div>
+                <p className="leading-relaxed text-white/80">
+                  &ldquo;They built us a custom client portal that saved us 10 hours a week in back-and-forth emails. Worth every penny.&rdquo;
+                </p>
+                <p className="mt-5 text-sm font-medium text-white/90">
+                  James R.
+                </p>
+                <p className="text-sm text-white/50">Riverside Consulting</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Booking — Calendly inline widget */}
+        <section
+          id="book"
+          className="border-t border-white/5 py-28 px-6 lg:px-8"
+        >
+          <div className="mx-auto max-w-5xl">
+            <div className="text-center">
+              <SectionLabel>BOOK A CALL</SectionLabel>
+              <h2 className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
+                Book Your Free Consult
+              </h2>
+              <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-white/70">
+                30 minutes. No pressure. Walk away with a clear plan.
+              </p>
+            </div>
+            <div className="mt-12 w-full overflow-hidden rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm">
+              <div
+                className="calendly-inline-widget w-full"
+                data-url="https://calendly.com/collin-parr46?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=1a1a1a&text_color=ffffff&primary_color=6366f1"
+                style={{ minWidth: "320px", height: "700px" }}
+              />
+            </div>
           </div>
         </section>
 
@@ -260,8 +377,11 @@ export default function Home() {
               <a href="#about" className="hover:text-white/80">
                 About
               </a>
-              <a href="#contact" className="hover:text-white/80">
-                Contact
+              <a href="#testimonials" className="hover:text-white/80">
+                Testimonials
+              </a>
+              <a href="#book" className="hover:text-white/80">
+                Book
               </a>
             </div>
           </div>

@@ -126,37 +126,51 @@
   }
 }
 
-@keyframes rocket-flame {
-  0% {
-    transform: scaleY(0.8);
+/* Flame — smooth breathe/pulse, 2–4s loop, staggered */
+@keyframes rocket-flame-breathe {
+  0%, 100% {
     opacity: 0.75;
+    transform: scale(0.92);
   }
   50% {
-    transform: scaleY(1.1);
     opacity: 1;
-  }
-  100% {
-    transform: scaleY(0.9);
-    opacity: 0.8;
+    transform: scale(1.08);
   }
 }
 
-@keyframes rocket-smoke {
+.rocket-flame-layer {
+  transform-origin: center top;
+}
+
+.rocket-flame-1 { animation: rocket-flame-breathe 2.4s ease-in-out infinite; }
+.rocket-flame-2 { animation: rocket-flame-breathe 3.2s ease-in-out infinite 0.3s; }
+.rocket-flame-3 { animation: rocket-flame-breathe 2.8s ease-in-out infinite 0.6s; }
+.rocket-flame-4 { animation: rocket-flame-breathe 3.5s ease-in-out infinite 0.2s; }
+.rocket-flame-5 { animation: rocket-flame-breathe 2.6s ease-in-out infinite 0.5s; }
+
+/* Smoke plume — slow drift and expand downward */
+@keyframes rocket-smoke-drift {
   0% {
-    opacity: 0.35;
+    opacity: 0.5;
     transform: translateY(0) scale(1);
   }
   100% {
-    opacity: 0;
-    transform: translateY(40px) scale(1.3);
+    opacity: 0.12;
+    transform: translateY(25px) scale(1.15);
   }
 }
 
-.rocket-flame {
-  animation: rocket-flame 0.6s ease-in-out infinite alternate;
-  transform-origin: top center;
+.rocket-smoke-a { animation: rocket-smoke-drift 4s ease-out infinite; transform-origin: center top; }
+.rocket-smoke-b { animation: rocket-smoke-drift 4.5s ease-out infinite 0.8s; transform-origin: center top; }
+.rocket-smoke-c { animation: rocket-smoke-drift 3.8s ease-out infinite 1.2s; transform-origin: center top; }
+.rocket-smoke-d { animation: rocket-smoke-drift 4.2s ease-out infinite 0.4s; transform-origin: center top; }
+
+/* Starfield — twinkle: max opacity to 0.1 and back (duration/delay set per star) */
+@keyframes twinkle {
+  0%, 100% { opacity: var(--star-max-opacity, 1); }
+  50% { opacity: 0.1; }
 }
 
-.rocket-smoke {
-  animation: rocket-smoke 1.8s ease-out infinite;
+.star-field-dot {
+  transform-origin: center;
 }
