@@ -174,3 +174,31 @@
 .star-field-dot {
   transform-origin: center;
 }
+
+/* Hero project card — floating */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Live indicator pulse */
+@keyframes live-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.1); }
+}
+
+.live-dot {
+  animation: live-pulse 2s ease-in-out infinite;
+}
+
+/* CTA hover glow — use .btn-cta-glow on primary buttons */
+.btn-cta-glow {
+  transition: box-shadow 0.2s ease;
+}
+.btn-cta-glow:hover {
+  box-shadow: 0 0 25px rgba(102, 0, 255, 0.4);
+}

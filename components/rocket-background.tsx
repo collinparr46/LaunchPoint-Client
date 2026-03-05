@@ -28,7 +28,7 @@ export function RocketBackground() {
   const translateY = 38 - progress * 78;
 
   return (
-    <div className="pointer-events-none fixed inset-0 z-0 flex items-center justify-center">
+    <div className="pointer-events-none fixed inset-0 flex items-center justify-center" style={{ zIndex: 0 }}>
       <div
         className="relative h-[420px] w-[80px]"
         style={{
