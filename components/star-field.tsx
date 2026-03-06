@@ -32,7 +32,9 @@ export function StarField() {
         size: Math.random() > 0.5 ? 1 : 2,
       });
     }
-    setStars(next);
+    setTimeout(() => {
+      setStars(next);
+    }, 0);
   }, []);
 
   if (stars.length === 0) return null;
