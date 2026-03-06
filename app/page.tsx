@@ -151,7 +151,9 @@ export default function Home() {
           <div className="relative mx-auto max-w-xl text-center lg:max-w-none lg:text-left">
             <SectionLabel>WEB DESIGN & DEVELOPMENT</SectionLabel>
             <h1 className="font-display text-4xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
-              We Build Websites That Work As Hard As You Do
+              Built to Launch.
+              <br />
+              Built to Last.
             </h1>
             <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-[#E2E2F0] sm:text-xl lg:mx-0">
               Custom websites for small businesses that need to look legit, launch fast, and actually convert.
