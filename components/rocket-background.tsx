@@ -6,20 +6,25 @@ export function RocketBackground() {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    let rafId: number;
+
     const handleScroll = () => {
-      const { scrollY, innerHeight } = window;
-      const docHeight = document.documentElement.scrollHeight;
-      const maxScroll = docHeight - innerHeight;
-      const raw = maxScroll > 0 ? scrollY / maxScroll : 0;
-      const clamped = Math.min(Math.max(raw, 0), 1);
-      setProgress(clamped);
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        const { scrollY, innerHeight } = window;
+        const docHeight = document.documentElement.scrollHeight;
+        const maxScroll = docHeight - innerHeight;
+        const raw = maxScroll > 0 ? scrollY / maxScroll : 0;
+        setProgress(Math.min(Math.max(raw, 0), 1));
+      });
     };
 
     handleScroll();
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("resize", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll, { passive: true });
 
     return () => {
+      cancelAnimationFrame(rafId);
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
     };
