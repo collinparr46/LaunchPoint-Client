@@ -3,11 +3,11 @@ export function ProjectShowcase() {
     <div className="relative mt-16 w-full max-w-lg lg:mt-0 lg:max-w-none">
       <div
         className="animate-float rounded-2xl border border-[#1E1E2E] bg-[#111118] p-8"
-        style={{ boxShadow: "0 0 60px rgba(102, 0, 255, 0.12)" }}
+        style={{ boxShadow: "0 0 60px rgba(124, 92, 252, 0.12)" }}
       >
         <span
-          className="inline-block rounded-full border border-[#6600FF] px-3 py-1 text-[0.7rem] font-medium uppercase tracking-[0.12em] text-[#6600FF]"
-          style={{ background: "rgba(102,0,255,0.15)" }}
+          className="inline-block rounded-full border border-[#7C5CFC] px-3 py-1 text-[0.7rem] font-medium uppercase tracking-[0.12em] text-[#7C5CFC]"
+          style={{ background: "rgba(124,92,252,0.15)" }}
         >
           LIVE PROJECT
         </span>
@@ -57,7 +57,7 @@ export function ProjectShowcase() {
             </div>
             <span
               style={{
-                background: "#6600FF",
+                background: "#7C5CFC",
                 borderRadius: 20,
                 padding: "2px 8px",
                 color: "#fff",
@@ -110,7 +110,7 @@ export function ProjectShowcase() {
             href="https://www.cutsbycate.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-md bg-[#6600FF] text-[0.8rem] font-medium text-white hover:brightness-110"
+            className="rounded-md bg-[#7C5CFC] text-[0.8rem] font-medium text-white hover:brightness-110"
             style={{ padding: "6px 14px" }}
           >
             View Site →

@@ -27,7 +27,7 @@ export function LocationBanner() {
         <button
           type="button"
           onClick={() => setDismissed(true)}
-          className="absolute right-4 top-1/2 -translate-y-1/2 rounded p-1 text-[#8888AA] hover:text-[#E2E2F0] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#6600FF]"
+          className="absolute right-4 top-1/2 -translate-y-1/2 rounded p-1 text-[#8888AA] hover:text-[#E2E2F0] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#7C5CFC]"
           aria-label="Dismiss announcement"
         >
           <X className="h-3.5 w-3.5" strokeWidth={1.5} aria-hidden="true" />

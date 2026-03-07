@@ -1,18 +1,12 @@
 import { ShoppingBag, Palette, Code2, MapPin, Zap } from "lucide-react";
+import { Navbar } from "@/components/navbar";
 import { RocketBackground } from "@/components/rocket-background";
 import { StarField } from "@/components/star-field";
+import { ShootingStars } from "@/components/shooting-stars";
 import { LocationBanner } from "@/components/location-banner";
 import { ProjectShowcase } from "@/components/project-showcase";
 import { CalendlyBadge } from "@/components/calendly-badge";
-
-const navLinks = [
-  { label: "Services", href: "#services" },
-  { label: "Process", href: "#process" },
-  { label: "About", href: "#about" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Portfolio", href: "#portfolio" },
-  { label: "Book", href: "#book" },
-];
+import { AmbientSound } from "@/components/ambient-sound";
 
 const services = [
   {
@@ -37,7 +31,7 @@ const services = [
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <p className="mb-4 text-[0.75rem] font-medium uppercase tracking-[0.15em] text-[#6600FF]">
+    <p className="mb-4 text-[0.75rem] font-medium uppercase tracking-[0.15em] text-[#7C5CFC]">
       {children}
     </p>
   );
@@ -47,44 +41,16 @@ export default function Home() {
   const currentMonth = new Date().toLocaleString("default", { month: "long" });
 
   return (
-    <div className="relative min-h-screen bg-[#08080F] text-[#E2E2F0]">
+    <div className="relative min-h-screen bg-[#0C0820] text-[#E2E2F0]">
       <StarField />
+      <ShootingStars />
       <RocketBackground />
       <CalendlyBadge />
+      <AmbientSound />
       <div className="relative z-10">
 
         {/* Navbar */}
-        <header className="fixed left-0 right-0 top-0 z-50 border-b border-[#1E1E2E] bg-[#08080F]/80 backdrop-blur-md">
-          <nav
-            aria-label="Main navigation"
-            className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8"
-          >
-            <a
-              href="#"
-              className="font-display text-2xl font-semibold tracking-tight text-white"
-              aria-label="LaunchPoint — home"
-            >
-              LaunchPoint
-            </a>
-            <div className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-10 md:flex">
-              {navLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  className="text-sm text-[#E2E2F0] transition-colors hover:text-white"
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
-            <a
-              href="#book"
-              className="btn-cta-glow rounded border border-[#1E1E2E] px-5 py-2.5 text-sm font-medium text-white transition-colors hover:border-[#6600FF]/50 hover:bg-[#6600FF]/10"
-            >
-              Schedule a Consult
-            </a>
-          </nav>
-        </header>
+        <Navbar />
 
         {/* Location announcement banner */}
         <LocationBanner />
@@ -116,7 +82,7 @@ export default function Home() {
             </p>
             <a
               href="#book"
-              className="btn-cta-glow mt-10 inline-block rounded bg-[#6600FF] px-8 py-4 text-sm font-semibold text-white shadow-[0_0_25px_rgba(102,0,255,0.2)] transition-shadow hover:shadow-[0_0_25px_rgba(102,0,255,0.4)]"
+              className="btn-cta-glow mt-10 inline-block rounded bg-[#7C5CFC] px-8 py-4 text-sm font-semibold text-white shadow-[0_0_25px_rgba(124,92,252,0.2)] transition-shadow hover:shadow-[0_0_25px_rgba(124,92,252,0.4)]"
             >
               Schedule a Consult
             </a>
@@ -151,11 +117,11 @@ export default function Home() {
                 return (
                   <div
                     key={service.title}
-                    className="group rounded-2xl border border-[#1E1E2E] bg-[#111118] p-8 transition-colors hover:border-[#6600FF]/40"
+                    className="group rounded-2xl border border-[#1E1E2E] bg-[#111118] p-8 transition-colors hover:border-[#7C5CFC]/40"
                   >
                     <div className="mb-6 inline-flex rounded-xl border border-[#1E1E2E] bg-[#111118] p-4">
                       <Icon
-                        className="h-7 w-7 text-[#6600FF]"
+                        className="h-7 w-7 text-[#7C5CFC]"
                         strokeWidth={1.5}
                         aria-hidden="true"
                       />
@@ -269,12 +235,12 @@ export default function Home() {
                   </span>
                   <span className="flex items-center gap-2 rounded-full border border-[#1E1E2E] bg-[#111118] px-4 py-2 text-sm text-[#8888AA]">
                     <Zap
-                      className="h-3.5 w-3.5 shrink-0 text-[#6600FF]"
+                      className="h-3.5 w-3.5 shrink-0 text-[#7C5CFC]"
                       strokeWidth={1.5}
                       fill="none"
                       aria-hidden="true"
                     />
-                    Average launch time: 2–3 weeks
+                    No agencies. No outsourcing. Just you and your developer.
                   </span>
                 </div>
               </div>
@@ -289,7 +255,7 @@ export default function Home() {
                     key={label}
                     className="rounded-xl border border-[#1E1E2E] bg-[#111118] p-6"
                   >
-                    <dt className="text-2xl font-bold text-[#6600FF]">{value}</dt>
+                    <dt className="text-2xl font-bold text-[#7C5CFC]">{value}</dt>
                     <dd className="mt-1 text-sm text-[#8888AA]">{label}</dd>
                   </div>
                 ))}
@@ -317,9 +283,9 @@ export default function Home() {
                 No retainers. No surprises. Just honest rates for quality work.
               </p>
             </div>
-            <div className="mt-20 grid gap-8 md:grid-cols-3">
+            <div className="mt-20 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
               {/* Starter */}
-              <div className="flex flex-col rounded-2xl border border-[#1E1E2E] bg-[#111118] p-8 transition-[border-color] duration-200 hover:border-[#6600FF]">
+              <div className="flex flex-col rounded-2xl border border-[#1E1E2E] bg-[#111118] p-8 transition-[border-color] duration-200 hover:border-[#7C5CFC]">
                 <h3 className="font-display text-xl font-semibold text-white">Starter</h3>
                 <p className="mt-2 text-3xl font-bold text-white">$750</p>
                 <p className="mt-4 text-sm leading-relaxed text-[#8888AA]">
@@ -335,16 +301,16 @@ export default function Home() {
                 </ul>
                 <a
                   href="#book"
-                  className="btn-cta-glow mt-8 block w-full rounded bg-[#6600FF] py-3 text-center text-sm font-semibold text-white"
+                  className="btn-cta-glow mt-8 block w-full rounded bg-[#7C5CFC] py-3 text-center text-sm font-semibold text-white"
                 >
                   Get Started
                 </a>
               </div>
 
               {/* Business — highlighted */}
-              <div className="relative flex flex-col rounded-2xl border border-[#6600FF] bg-[#111118] p-8 shadow-[0_0_30px_rgba(102,0,255,0.08)]">
+              <div className="relative flex flex-col rounded-2xl border border-[#7C5CFC] bg-[#111118] p-8 shadow-[0_0_30px_rgba(124,92,252,0.08)]">
                 <span
-                  className="absolute -top-3 left-1/2 -translate-x-1/2 rounded bg-[#111118] px-3 py-0.5 text-xs font-medium text-[#6600FF]"
+                  className="absolute -top-3 left-1/2 -translate-x-1/2 rounded bg-[#111118] px-3 py-0.5 text-xs font-medium text-[#7C5CFC]"
                   aria-label="Most popular plan"
                 >
                   MOST POPULAR
@@ -365,14 +331,14 @@ export default function Home() {
                 </ul>
                 <a
                   href="#book"
-                  className="btn-cta-glow mt-8 block w-full rounded bg-[#6600FF] py-3 text-center text-sm font-semibold text-white"
+                  className="btn-cta-glow mt-8 block w-full rounded bg-[#7C5CFC] py-3 text-center text-sm font-semibold text-white"
                 >
                   Get Started
                 </a>
               </div>
 
               {/* Custom */}
-              <div className="flex flex-col rounded-2xl border border-[#1E1E2E] bg-[#111118] p-8 transition-[border-color] duration-200 hover:border-[#6600FF]">
+              <div className="flex flex-col rounded-2xl border border-[#1E1E2E] bg-[#111118] p-8 transition-[border-color] duration-200 hover:border-[#7C5CFC]">
                 <h3 className="font-display text-xl font-semibold text-white">Custom</h3>
                 <p className="mt-2 text-3xl font-bold text-white">Starting at $3,000</p>
                 <p className="mt-4 text-sm leading-relaxed text-[#8888AA]">
@@ -387,9 +353,34 @@ export default function Home() {
                 </ul>
                 <a
                   href="#book"
-                  className="btn-cta-glow mt-8 block w-full rounded border border-[#6600FF] py-3 text-center text-sm font-semibold text-[#6600FF] transition-colors hover:bg-[#6600FF]/10"
+                  className="btn-cta-glow mt-8 block w-full rounded border border-[#7C5CFC] py-3 text-center text-sm font-semibold text-[#7C5CFC] transition-colors hover:bg-[#7C5CFC]/10"
                 >
                   Let&apos;s Talk
+                </a>
+              </div>
+
+              {/* Website Care Plan */}
+              <div className="flex flex-col rounded-2xl border border-[#1E1E2E] bg-[#111118] p-8 transition-[border-color] duration-200 hover:border-[#7C5CFC]">
+                <h3 className="font-display text-xl font-semibold text-white">Website Care Plan</h3>
+                <div className="mt-2 flex items-baseline gap-1">
+                  <p className="text-3xl font-bold text-white">$49.99</p>
+                  <span className="text-sm text-[#8888AA]">/month</span>
+                </div>
+                <p className="mt-1 text-xs font-medium uppercase tracking-wider text-[#C8B8FF]">Recurring Subscription</p>
+                <p className="mt-4 text-sm leading-relaxed text-[#8888AA]">
+                  Keep your site secure, online, and up to date — every month, without the hassle.
+                </p>
+                <ul className="mt-6 flex-1 space-y-3 text-sm text-[#E2E2F0]">
+                  <li>Hosting management</li>
+                  <li>Security updates</li>
+                  <li>Uptime monitoring</li>
+                  <li>Minor content edits (up to 1 hr/month)</li>
+                </ul>
+                <a
+                  href="#book"
+                  className="btn-cta-glow mt-8 block w-full rounded border border-[#7C5CFC] py-3 text-center text-sm font-semibold text-[#7C5CFC] transition-colors hover:bg-[#7C5CFC]/10"
+                >
+                  Get Started
                 </a>
               </div>
             </div>
@@ -412,9 +403,9 @@ export default function Home() {
                 Built for Real Businesses.
               </h2>
             </div>
-            <div className="mt-20 rounded-2xl border border-[#1E1E2E] bg-[#111118] p-8 shadow-[0_0_30px_rgba(102,0,255,0.08)] md:grid md:grid-cols-2 md:gap-12 md:p-10">
+            <div className="mt-20 rounded-2xl border border-[#1E1E2E] bg-[#111118] p-8 shadow-[0_0_30px_rgba(124,92,252,0.08)] md:grid md:grid-cols-2 md:gap-12 md:p-10">
               <div>
-                <p className="text-xs font-medium uppercase tracking-wider text-[#6600FF]">
+                <p className="text-xs font-medium uppercase tracking-wider text-[#7C5CFC]">
                   LIVE PROJECT
                 </p>
                 <h3 className="mt-2 font-display text-3xl font-bold text-white md:text-4xl">
@@ -430,13 +421,13 @@ export default function Home() {
                   href="https://www.cutsbycate.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-cta-glow mt-8 inline-block rounded bg-[#6600FF] px-6 py-3 text-sm font-semibold text-white"
+                  className="btn-cta-glow mt-8 inline-block rounded bg-[#7C5CFC] px-6 py-3 text-sm font-semibold text-white"
                 >
                   View Live Site →
                 </a>
               </div>
               <div className="mt-10 md:mt-0">
-                <div className="border-l-2 border-[#6600FF] pl-6">
+                <div className="border-l-2 border-[#7C5CFC] pl-6">
                   <div
                     className="mb-4 flex gap-0.5 text-[#F4C842]"
                     aria-label="5 out of 5 stars"
@@ -455,6 +446,52 @@ export default function Home() {
                     </p>
                     <footer className="mt-5 text-sm not-italic text-[#8888AA]">
                       Catelin Parr — Hairstylist, Tulsa OK
+                    </footer>
+                  </blockquote>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-8 rounded-2xl border border-[#1E1E2E] bg-[#111118] p-8 shadow-[0_0_30px_rgba(124,92,252,0.08)] md:grid md:grid-cols-2 md:gap-12 md:p-10">
+              <div>
+                <p className="text-xs font-medium uppercase tracking-wider text-[#7C5CFC]">
+                  LIVE PROJECT
+                </p>
+                <h3 className="mt-2 font-display text-3xl font-bold text-white md:text-4xl">
+                  Riverside Air Comfort
+                </h3>
+                <p className="mt-6 leading-relaxed text-[#E2E2F0]">
+                  HVAC specialist website — Tulsa, OK
+                </p>
+                <a
+                  href="https://riverside-air-comfort.vercel.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-cta-glow mt-8 inline-block rounded bg-[#7C5CFC] px-6 py-3 text-sm font-semibold text-white"
+                >
+                  View Live Site →
+                </a>
+              </div>
+              <div className="mt-10 md:mt-0">
+                <div className="border-l-2 border-[#7C5CFC] pl-6">
+                  <div
+                    className="mb-4 flex gap-0.5 text-[#F4C842]"
+                    aria-label="5 out of 5 stars"
+                    role="img"
+                  >
+                    {[1, 2, 3, 4, 5].map((i) => (
+                      <span key={i} aria-hidden="true" className="text-lg">★</span>
+                    ))}
+                  </div>
+                  <blockquote className="italic leading-relaxed text-[#E2E2F0]">
+                    <p>
+                      &ldquo;We needed a site that actually looked like a real
+                      business. LaunchPoint delivered something clean and
+                      professional in under two weeks. Already getting calls
+                      from it.&rdquo;
+                    </p>
+                    <footer className="mt-5 text-sm not-italic text-[#8888AA]">
+                      Marcus Webb — Owner, Riverside Air Comfort
                     </footer>
                   </blockquote>
                 </div>
@@ -484,7 +521,7 @@ export default function Home() {
               It starts with a free 30-minute call. No pitch, no pressure — just
               a clear plan for what your business needs online.
             </p>
-            <p className="mt-4 flex items-center justify-center gap-2 text-sm text-[#6600FF]">
+            <p className="mt-4 flex items-center justify-center gap-2 text-sm text-[#7C5CFC]">
               <Zap
                 className="h-3.5 w-3.5 shrink-0"
                 strokeWidth={1.5}
@@ -501,7 +538,7 @@ export default function Home() {
               href="https://calendly.com/collin-parr46/30min"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-10 inline-block rounded-lg bg-[#6600FF] px-10 py-4 text-[1.1rem] font-semibold text-white transition-[box-shadow] duration-200 hover:shadow-[0_0_25px_rgba(102,0,255,0.5)]"
+              className="mt-10 inline-block rounded-lg bg-[#7C5CFC] px-10 py-4 text-[1.1rem] font-semibold text-white transition-[box-shadow] duration-200 hover:shadow-[0_0_25px_rgba(124,92,252,0.5)]"
             >
               Book Your Free Call →
             </a>

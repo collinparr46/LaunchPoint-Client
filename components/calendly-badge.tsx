@@ -21,9 +21,9 @@ export function CalendlyBadge() {
     script.async = true;
     script.onload = () => {
       (window as unknown as CalendlyWindow).Calendly?.initBadgeWidget({
-        url: "https://calendly.com/collin-parr46/30min?hide_gdpr_banner=1&background_color=08080f&text_color=e2e2f0&primary_color=6600ff",
+        url: "https://calendly.com/collin-parr46/30min?hide_gdpr_banner=1&background_color=0c0820&text_color=e2e2f0&primary_color=7c5cfc",
         text: "Schedule Consult",
-        color: "#08080f",
+        color: "#0c0820",
         textColor: "#e2e2f0",
         branding: true,
       });
