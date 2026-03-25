@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Outfit, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
+import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/sections/Footer";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -96,8 +98,11 @@ export default function RootLayout({
       </head>
       <body
         className={`${outfit.variable} ${cormorant.variable} antialiased`}
+        style={{ background: "#13213F", color: "#ffffff" }}
       >
-        {children}
+        <Navbar />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );

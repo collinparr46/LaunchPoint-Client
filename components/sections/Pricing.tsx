@@ -53,7 +53,7 @@ export function Pricing() {
 
         <div className="mt-16 grid gap-8 md:grid-cols-2">
 
-          {/* Card 1 — Your Website (dominant) */}
+          {/* Card 1 — Website Build */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -117,12 +117,12 @@ export function Pricing() {
               </div>
               <span
                 className="mt-2 inline-block rounded-full px-3 py-1 text-xs font-medium text-white"
-                style={{ background: "#C31F75", fontFamily: "var(--font-outfit)" }}
+                style={{ background: "rgba(51,161,222,0.18)", border: "1px solid rgba(51,161,222,0.35)", color: "#33A1DE", fontFamily: "var(--font-outfit)" }}
               >
-                Required with every project
+                Recommended
               </span>
               <p className="mt-3 text-sm text-silver-gray" style={{ fontFamily: "var(--font-outfit)", fontWeight: 300 }}>
-                We keep it running so you don&apos;t have to.
+                Your site stays fast, secure, and online — so you can focus on your business.
               </p>
             </div>
 
@@ -135,21 +135,26 @@ export function Pricing() {
               ))}
             </ul>
 
-            <div
-              className="mt-8 block w-full rounded-lg border py-3 text-center text-sm font-medium text-silver-gray"
-              style={{ borderColor: "rgba(195,199,201,0.3)", fontFamily: "var(--font-outfit)" }}
-            >
-              Included with your build
-            </div>
+            <p className="mt-8 text-center text-xs text-silver-gray" style={{ fontFamily: "var(--font-outfit)", fontWeight: 300 }}>
+              You own your site. Host it with us for hands-off maintenance, or take it anywhere.
+            </p>
           </motion.div>
         </div>
 
-        <p
-          className="mt-10 text-center text-sm text-silver-gray"
-          style={{ fontFamily: "var(--font-outfit)", fontWeight: 300 }}
+        <div
+          className="mt-10 rounded-lg px-6 py-4 text-center"
+          style={{ background: "rgba(51,161,222,0.05)", border: "1px solid rgba(51,161,222,0.1)" }}
         >
-          No retainers. No hidden fees. Cancel hosting anytime — you keep your site.
-        </p>
+          <p
+            className="text-sm font-medium text-white"
+            style={{ fontFamily: "var(--font-outfit)" }}
+          >
+            Cancel hosting anytime — you keep your site.
+          </p>
+          <p className="mt-1 text-xs text-silver-gray" style={{ fontFamily: "var(--font-outfit)", fontWeight: 300 }}>
+            No retainers. No hidden fees. No lock-in.
+          </p>
+        </div>
       </div>
     </section>
   );

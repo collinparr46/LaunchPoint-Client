@@ -2,20 +2,28 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
-  { label: "Services", href: "#services" },
-  { label: "Process", href: "#process" },
-  { label: "About", href: "#about" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Portfolio", href: "#portfolio" },
-  { label: "Book", href: "#book" },
+  { label: "Services", href: "/services" },
+  { label: "Process", href: "/process" },
+  { label: "About", href: "/about" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "Portfolio", href: "/portfolio" },
+  { label: "Book", href: "/book" },
+];
+
+const mobileNavLinks = [
+  { label: "Home", href: "/" },
+  ...navLinks,
 ];
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     function onScroll() {
@@ -59,30 +67,43 @@ export function Navbar() {
           className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-6 lg:px-8"
         >
           {/* Logo */}
-          <a href="#" aria-label="LaunchPoint Studio — home" className="flex items-center">
+          <Link href="/" aria-label="LaunchPoint Studio — home" className="flex items-center">
             <Image
-              src="/LP Reversed Logo.png"
+              src="/LP Icon No BG.png"
               alt="LaunchPoint Studio"
-              width={160}
-              height={36}
+              width={48}
+              height={48}
               priority
-              className="h-9 w-auto"
+              className="h-11 w-auto"
             />
-          </a>
+          </Link>
 
           {/* Desktop links — centered */}
           <div className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 md:flex">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="group relative text-sm text-silver-gray transition-colors hover:text-white"
-                style={{ fontFamily: "var(--font-outfit)", fontWeight: 400 }}
-              >
-                {link.label}
-                <span className="absolute -bottom-0.5 left-0 h-[2px] w-0 rounded-full bg-photon-blue transition-all duration-300 group-hover:w-full" />
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="group relative text-sm transition-colors hover:text-white"
+                  style={{
+                    fontFamily: "var(--font-outfit)",
+                    fontWeight: 400,
+                    color: isActive ? "#ffffff" : "rgba(195,199,201,1)",
+                  }}
+                >
+                  {link.label}
+                  <span
+                    className="absolute -bottom-0.5 left-0 h-[2px] rounded-full bg-photon-blue transition-all duration-300"
+                    style={{ width: isActive ? "100%" : "0%", opacity: isActive ? 1 : undefined }}
+                  />
+                  {!isActive && (
+                    <span className="absolute -bottom-0.5 left-0 h-[2px] w-0 rounded-full bg-photon-blue transition-all duration-300 group-hover:w-full" />
+                  )}
+                </Link>
+              );
+            })}
           </div>
 
           {/* Desktop CTA */}
@@ -144,20 +165,18 @@ export function Navbar() {
             <div className="absolute inset-0" style={{ background: "rgba(19,33,63,0.93)" }} />
 
             <nav className="relative z-10 flex flex-col items-center gap-8 px-6 pb-16 pt-8 w-full">
-              {navLinks.map((link, i) => (
-                <motion.a
-                  key={link.label}
-                  href={link.href}
-                  onClick={handleLinkClick}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.05 * i, duration: 0.3 }}
-                  className="group flex items-center gap-3 text-2xl font-semibold text-white transition-colors hover:text-photon-blue"
-                  style={{ fontFamily: "var(--font-outfit)" }}
-                >
-                  <span className="h-1.5 w-1.5 rounded-full bg-photon-blue opacity-0 transition-opacity group-hover:opacity-100" />
-                  {link.label}
-                </motion.a>
+              {mobileNavLinks.map((link, i) => (
+                <motion.div key={link.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 * i, duration: 0.3 }}>
+                  <Link
+                    href={link.href}
+                    onClick={handleLinkClick}
+                    className="group flex items-center gap-3 text-2xl font-semibold text-white transition-colors hover:text-photon-blue"
+                    style={{ fontFamily: "var(--font-outfit)" }}
+                  >
+                    <span className="h-1.5 w-1.5 rounded-full bg-photon-blue opacity-0 transition-opacity group-hover:opacity-100" />
+                    {link.label}
+                  </Link>
+                </motion.div>
               ))}
 
               <motion.a
@@ -167,7 +186,7 @@ export function Navbar() {
                 onClick={handleLinkClick}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.35, duration: 0.3 }}
+                transition={{ delay: 0.05 * mobileNavLinks.length, duration: 0.3 }}
                 className="mt-4 w-full max-w-xs rounded-lg bg-photon-blue py-4 text-center text-base font-semibold text-white"
                 style={{ fontFamily: "var(--font-outfit)" }}
               >
