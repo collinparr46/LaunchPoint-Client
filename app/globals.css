@@ -2,16 +2,25 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ── Brand color utilities ─────────────────────────────────────────── */
+@theme {
+  --color-stellar-navy: #13213F;
+  --color-deep-navy: #0B1528;
+  --color-midnight-navy: #1A2D4F;
+  --color-photon-blue: #33A1DE;
+  --color-magenta-orbit: #C31F75;
+  --color-silver-gray: #C3C7C9;
+
+  --font-sans: var(--font-outfit), sans-serif;
+  --font-display: var(--font-cormorant), serif;
+  --font-heading: var(--font-outfit), sans-serif;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-display: var(--font-cormorant), serif;
   --color-ring: var(--ring);
   --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
   --color-primary-foreground: var(--primary-foreground);
   --color-primary: var(--primary);
   --radius-sm: calc(var(--radius) - 4px);
@@ -25,23 +34,42 @@
 
 :root {
   --radius: 0.625rem;
-  --background: #0c0820;
-  --foreground: #e2e2f0;
-  --primary: #7c5cfc;
+  --background: #13213F;
+  --foreground: #ffffff;
+  --primary: #33A1DE;
   --primary-foreground: #ffffff;
-  --muted: #1e1e2e;
-  --muted-foreground: #8888aa;
-  --border: #1e1e2e;
-  --ring: #7c5cfc;
-  --destructive: #dc2626;
+  --border: rgba(51, 161, 222, 0.12);
+  --ring: #33A1DE;
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
-    @apply bg-background text-foreground;
+    background: #13213F;
+    color: #ffffff;
+    font-family: var(--font-outfit), sans-serif;
+  }
+  ::selection {
+    background: #33A1DE;
+    color: #ffffff;
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #13213F;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #33A1DE;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #4db8f5;
   }
 }
 
@@ -52,58 +80,24 @@
   }
 }
 
-/* ── Rocket animations ─────────────────────────────────────────────── */
-@keyframes rocket-flame-breathe {
-  0%, 100% { opacity: 0.75; transform: scale(0.92); }
-  50% { opacity: 1; transform: scale(1.08); }
-}
-
-.rocket-flame-layer { transform-origin: center top; }
-
-.rocket-flame-1 { animation: rocket-flame-breathe 2.4s ease-in-out infinite; }
-.rocket-flame-2 { animation: rocket-flame-breathe 3.2s ease-in-out infinite 0.3s; }
-.rocket-flame-3 { animation: rocket-flame-breathe 2.8s ease-in-out infinite 0.6s; }
-.rocket-flame-4 { animation: rocket-flame-breathe 3.5s ease-in-out infinite 0.2s; }
-.rocket-flame-5 { animation: rocket-flame-breathe 2.6s ease-in-out infinite 0.5s; }
-
-@keyframes rocket-smoke-drift {
-  0%   { opacity: 0.5;  transform: translateY(0)    scale(1); }
-  100% { opacity: 0.12; transform: translateY(25px) scale(1.15); }
-}
-
-.rocket-smoke-a { animation: rocket-smoke-drift 4s   ease-out infinite;       transform-origin: center top; }
-.rocket-smoke-b { animation: rocket-smoke-drift 4.5s ease-out infinite 0.8s;  transform-origin: center top; }
-.rocket-smoke-c { animation: rocket-smoke-drift 3.8s ease-out infinite 1.2s;  transform-origin: center top; }
-.rocket-smoke-d { animation: rocket-smoke-drift 4.2s ease-out infinite 0.4s;  transform-origin: center top; }
-
-/* ── Starfield ─────────────────────────────────────────────────────── */
+/* ── Twinkling stars ─────────────────────────────────────────────────── */
 @keyframes twinkle {
   0%, 100% { opacity: var(--star-max-opacity, 1); }
   50%       { opacity: 0.1; }
 }
 
-.star-field-dot { transform-origin: center; }
+.star-field-dot {
+  transform-origin: center;
+  will-change: opacity;
+}
 
-/* ── Hero project card ─────────────────────────────────────────────── */
+/* ── Float animation (rocket, decorative) ───────────────────────────── */
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-10px); }
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
 }
 
-.animate-float { animation: float 4s ease-in-out infinite; }
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-float,
-  .rocket-flame-layer,
-  .rocket-smoke-a,
-  .rocket-smoke-b,
-  .rocket-smoke-c,
-  .rocket-smoke-d,
-  .star-field-dot,
-  .shooting-star {
-    animation: none;
-  }
-}
+.animate-float { animation: float 6s ease-in-out infinite; }
 
 /* ── Shooting stars / comets ───────────────────────────────────────── */
 @keyframes comet-streak {
@@ -122,20 +116,69 @@
 .shooting-star {
   width: var(--comet-length);
   height: 1px;
-  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(200,184,255,0.6) 60%, rgba(255,255,255,0.9) 100%);
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(51,161,222,0.6) 60%, rgba(255,255,255,0.9) 100%);
   border-radius: 9999px;
   opacity: 0;
   animation: comet-streak var(--comet-duration) ease-in var(--comet-delay) infinite;
 }
 
-/* ── Live dot ──────────────────────────────────────────────────────── */
+/* ── Live dot pulse ─────────────────────────────────────────────────── */
 @keyframes live-pulse {
   0%, 100% { opacity: 1; transform: scale(1); }
-  50%       { opacity: 0.6; transform: scale(1.1); }
+  50%       { opacity: 0.5; transform: scale(1.3); }
 }
 
-.live-dot { animation: live-pulse 2s ease-in-out infinite; }
+.live-dot { animation: live-pulse 1.5s ease-in-out infinite; }
 
-/* ── CTA hover glow ────────────────────────────────────────────────── */
-.btn-cta-glow { transition: box-shadow 0.2s ease; }
-.btn-cta-glow:hover { box-shadow: 0 0 25px rgba(124, 92, 252, 0.4); }
+/* ── Gradient accent line (appears above section headings) ──────────── */
+.gradient-accent-line {
+  width: 48px;
+  height: 3px;
+  background: linear-gradient(to right, #33A1DE, #C31F75);
+  border-radius: 9999px;
+}
+
+/* ── CTA glow utilities ─────────────────────────────────────────────── */
+.btn-photon-glow {
+  box-shadow: 0 0 30px rgba(51, 161, 222, 0.3);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.btn-photon-glow:hover {
+  box-shadow: 0 0 50px rgba(51, 161, 222, 0.5);
+  transform: translateY(-2px);
+}
+
+.btn-gradient-glow {
+  background: linear-gradient(135deg, #33A1DE, #C31F75);
+  box-shadow: 0 0 40px rgba(51, 161, 222, 0.25), 0 0 40px rgba(195, 31, 117, 0.15);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.btn-gradient-glow:hover {
+  box-shadow: 0 0 60px rgba(51, 161, 222, 0.4), 0 0 60px rgba(195, 31, 117, 0.25);
+  transform: scale(1.02);
+}
+
+/* ── Glassmorphism card ─────────────────────────────────────────────── */
+.glass-card {
+  background: rgba(26, 45, 79, 0.5);
+  border: 1px solid rgba(51, 161, 222, 0.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 0.75rem;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.glass-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(51, 161, 222, 0.3);
+  box-shadow: 0 8px 32px rgba(51, 161, 222, 0.1);
+}
+
+/* ── Reduced motion overrides ───────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .star-field-dot,
+  .shooting-star,
+  .live-dot {
+    animation: none;
+  }
+}

@@ -1,95 +1,86 @@
 import type { Metadata } from "next";
-import { Geist, Cormorant_Garamond } from "next/font/google";
+import { Outfit, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "600", "700"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
-const siteUrl = "https://www.launchpoint.studio";
+const siteUrl = "https://www.launchpointportal.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "LaunchPoint — Web Design & Development for Small Business",
-    template: "%s | LaunchPoint",
+    default: "LaunchPoint Studio — Custom Websites for Small Business | Tulsa, OK",
+    template: "%s | LaunchPoint Studio",
   },
   description:
-    "Tulsa-based web design studio building custom websites and web apps for small businesses. Launch in weeks, not months. eCommerce, portfolios, and client portals.",
+    "Custom websites for small businesses. $1,000 flat rate, live in under 3 weeks. Tulsa-based web design studio serving clients nationwide.",
   keywords: [
-    "web design Tulsa",
-    "web development small business",
-    "custom website Tulsa Oklahoma",
+    "web design tulsa",
     "small business website",
-    "eCommerce store design",
-    "portfolio website",
-    "web app development",
-    "LaunchPoint",
+    "custom website design",
+    "affordable web design",
+    "tulsa web developer",
+    "freelancer website design",
+    "launchpoint studio",
   ],
   authors: [{ name: "Collin Parr", url: siteUrl }],
   creator: "Collin Parr",
   alternates: { canonical: "/" },
   openGraph: {
-    type: "website",
-    url: siteUrl,
-    siteName: "LaunchPoint",
-    title: "LaunchPoint — Web Design & Development for Small Business",
+    title: "LaunchPoint Studio — Built to Launch. Built to Last.",
     description:
-      "Tulsa-based web design studio building custom websites for small businesses. Launch in weeks, not months.",
+      "Custom websites for small businesses. $1,000 flat rate, live in under 3 weeks.",
+    url: siteUrl,
+    siteName: "LaunchPoint Studio",
+    type: "website",
+    locale: "en_US",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "LaunchPoint — Built to Launch. Built to Last.",
+        alt: "LaunchPoint Studio — Built to Launch. Built to Last.",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "LaunchPoint — Web Design & Development for Small Business",
+    title: "LaunchPoint Studio — Custom Websites for Small Business",
     description:
-      "Tulsa-based web design studio building custom websites for small businesses. Launch in weeks, not months.",
+      "Custom websites for small businesses. $1,000 flat rate, live in under 3 weeks.",
     images: ["/og-image.png"],
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: { index: true, follow: true },
-  },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: "LaunchPoint",
+  "@type": "ProfessionalService",
+  name: "LaunchPoint Studio, LLC",
+  description: "Custom web design and development for small businesses",
   url: siteUrl,
-  description:
-    "Tulsa-based web design studio building custom websites and web apps for small businesses.",
+  areaServed: "US",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Tulsa",
     addressRegion: "OK",
     addressCountry: "US",
   },
-  areaServed: "Nationwide",
+  priceRange: "$1,000",
   founder: { "@type": "Person", name: "Collin Parr" },
-  serviceType: [
-    "Web Design",
-    "Web Development",
-    "eCommerce Development",
-    "Custom Web Applications",
-  ],
-  priceRange: "$750–$3000+",
 };
 
 export default function RootLayout({
@@ -104,7 +95,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${cormorant.variable} font-sans antialiased`}
+        className={`${outfit.variable} ${cormorant.variable} antialiased`}
       >
         {children}
       </body>

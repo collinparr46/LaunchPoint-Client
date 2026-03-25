@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
   { label: "Services", href: "#services" },
@@ -13,17 +15,23 @@ const navLinks = [
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  // Close menu on resize to desktop
   useEffect(() => {
+    function onScroll() {
+      setScrolled(window.scrollY > 50);
+    }
     function onResize() {
       if (window.innerWidth >= 768) setOpen(false);
     }
+    window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onResize);
+    };
   }, []);
 
-  // Prevent body scroll while menu is open
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
@@ -34,119 +42,141 @@ export function Navbar() {
   }
 
   return (
-    <header className="fixed left-0 right-0 top-0 z-50 border-b border-[#1E1E2E] bg-[#0C0820]/80 backdrop-blur-md">
-      <nav
-        aria-label="Main navigation"
-        className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8"
+    <>
+      <header
+        className="fixed left-0 right-0 top-0 z-50 transition-all duration-300"
+        style={{
+          background: scrolled
+            ? "rgba(19,33,63,0.92)"
+            : "transparent",
+          backdropFilter: scrolled ? "blur(16px)" : "none",
+          WebkitBackdropFilter: scrolled ? "blur(16px)" : "none",
+          borderBottom: scrolled ? "1px solid rgba(51,161,222,0.1)" : "1px solid transparent",
+        }}
       >
-        {/* Logo */}
-        <a
-          href="#"
-          className="font-display text-2xl font-semibold tracking-tight text-white"
-          aria-label="LaunchPoint — home"
+        <nav
+          aria-label="Main navigation"
+          className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-6 lg:px-8"
         >
-          LaunchPoint
-        </a>
+          {/* Logo */}
+          <a href="#" aria-label="LaunchPoint Studio — home" className="flex items-center">
+            <Image
+              src="/LP Reversed Logo.png"
+              alt="LaunchPoint Studio"
+              width={160}
+              height={36}
+              priority
+              className="h-9 w-auto"
+            />
+          </a>
 
-        {/* Desktop links — centered */}
-        <div className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-10 md:flex">
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="text-sm text-[#E2E2F0] transition-colors hover:text-white"
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
+          {/* Desktop links — centered */}
+          <div className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 md:flex">
+            {navLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="group relative text-sm text-silver-gray transition-colors hover:text-white"
+                style={{ fontFamily: "var(--font-outfit)", fontWeight: 400 }}
+              >
+                {link.label}
+                <span className="absolute -bottom-0.5 left-0 h-[2px] w-0 rounded-full bg-photon-blue transition-all duration-300 group-hover:w-full" />
+              </a>
+            ))}
+          </div>
 
-        {/* Desktop CTA — hidden on mobile */}
-        <a
-          href="#book"
-          className="btn-cta-glow hidden rounded border border-[#1E1E2E] px-5 py-2.5 text-sm font-medium text-white transition-colors hover:border-[#7C5CFC]/50 hover:bg-[#7C5CFC]/10 md:inline-block"
-        >
-          Schedule a Consult
-        </a>
-
-        {/* Hamburger — mobile only */}
-        <button
-          type="button"
-          onClick={() => setOpen((o) => !o)}
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-          aria-label={open ? "Close navigation menu" : "Open navigation menu"}
-          className="flex h-10 w-10 items-center justify-center rounded border border-[#1E1E2E] text-[#E2E2F0] transition-colors hover:border-[#7C5CFC]/50 hover:text-white md:hidden"
-        >
-          {open ? (
-            // X icon
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              <line x1="18" y1="6" x2="6" y2="18" />
-              <line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
-          ) : (
-            // Hamburger icon
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              <line x1="3" y1="6" x2="21" y2="6" />
-              <line x1="3" y1="12" x2="21" y2="12" />
-              <line x1="3" y1="18" x2="21" y2="18" />
-            </svg>
-          )}
-        </button>
-      </nav>
-
-      {/* Mobile menu — slides down from the header */}
-      <div
-        id="mobile-menu"
-        role="dialog"
-        aria-label="Mobile navigation"
-        className={[
-          "overflow-hidden border-t border-[#1E1E2E] bg-[#0C0820] transition-all duration-300 ease-in-out md:hidden",
-          open ? "max-h-screen opacity-100" : "max-h-0 opacity-0",
-        ].join(" ")}
-      >
-        <nav className="flex flex-col px-6 pb-8 pt-4">
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              onClick={handleLinkClick}
-              className="border-b border-[#1E1E2E] py-4 text-base font-medium text-[#E2E2F0] transition-colors last:border-b-0 hover:text-[#7C5CFC]"
-            >
-              {link.label}
-            </a>
-          ))}
+          {/* Desktop CTA */}
           <a
-            href="#book"
-            onClick={handleLinkClick}
-            className="btn-cta-glow mt-6 block w-full rounded bg-[#7C5CFC] py-3 text-center text-sm font-semibold text-white"
+            href="https://calendly.com/collin-parr46/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden rounded-md border border-photon-blue px-5 py-2 text-sm font-medium text-white transition-all duration-200 hover:bg-photon-blue md:inline-block"
+            style={{ fontFamily: "var(--font-outfit)" }}
           >
             Schedule a Consult
           </a>
+
+          {/* Hamburger — mobile only */}
+          <button
+            type="button"
+            onClick={() => setOpen((o) => !o)}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            aria-label={open ? "Close navigation menu" : "Open navigation menu"}
+            className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded md:hidden"
+          >
+            <span
+              className="block h-[2px] w-6 rounded-full bg-white transition-all duration-300 origin-center"
+              style={{ transform: open ? "rotate(45deg) translate(2.5px, 2.5px)" : "none" }}
+            />
+            <span
+              className="block h-[2px] w-6 rounded-full bg-white transition-all duration-300"
+              style={{ opacity: open ? 0 : 1 }}
+            />
+            <span
+              className="block h-[2px] w-6 rounded-full bg-white transition-all duration-300 origin-center"
+              style={{ transform: open ? "rotate(-45deg) translate(2.5px, -2.5px)" : "none" }}
+            />
+          </button>
         </nav>
-      </div>
-    </header>
+      </header>
+
+      {/* Mobile overlay menu */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            id="mobile-menu"
+            role="dialog"
+            aria-label="Mobile navigation"
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="fixed inset-0 z-40 flex flex-col items-center justify-center md:hidden"
+            style={{
+              background: "rgba(19,33,63,0.98)",
+              backgroundImage: "url('/LP Visual Pattern.png')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          >
+            {/* Dim overlay so text is readable over pattern */}
+            <div className="absolute inset-0" style={{ background: "rgba(19,33,63,0.93)" }} />
+
+            <nav className="relative z-10 flex flex-col items-center gap-8 px-6 pb-16 pt-8 w-full">
+              {navLinks.map((link, i) => (
+                <motion.a
+                  key={link.label}
+                  href={link.href}
+                  onClick={handleLinkClick}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.05 * i, duration: 0.3 }}
+                  className="group flex items-center gap-3 text-2xl font-semibold text-white transition-colors hover:text-photon-blue"
+                  style={{ fontFamily: "var(--font-outfit)" }}
+                >
+                  <span className="h-1.5 w-1.5 rounded-full bg-photon-blue opacity-0 transition-opacity group-hover:opacity-100" />
+                  {link.label}
+                </motion.a>
+              ))}
+
+              <motion.a
+                href="https://calendly.com/collin-parr46/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={handleLinkClick}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.35, duration: 0.3 }}
+                className="mt-4 w-full max-w-xs rounded-lg bg-photon-blue py-4 text-center text-base font-semibold text-white"
+                style={{ fontFamily: "var(--font-outfit)" }}
+              >
+                Schedule a Consult
+              </motion.a>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
