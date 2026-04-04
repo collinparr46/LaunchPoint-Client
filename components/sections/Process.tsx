@@ -53,7 +53,7 @@ export function Process() {
           From Idea to Launch
         </h2>
 
-        {/* Timeline connector — desktop only */}
+        {/* Timeline connector (desktop only) */}
         <div ref={lineRef} className="relative mt-20 hidden md:block">
           <div className="absolute top-8 left-[16.67%] right-[16.67%] h-[3px] bg-midnight-navy rounded-full overflow-hidden">
             <motion.div

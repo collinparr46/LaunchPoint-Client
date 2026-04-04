@@ -16,7 +16,7 @@ export function Hero() {
 
       <div className="relative z-10 mx-auto w-full max-w-4xl px-6 py-36 text-center lg:px-8">
 
-        {/* 4K Logo — Visual Anchor */}
+        {/* Logo */}
         <motion.div
           initial={{ opacity: 0, scale: 0.88 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -24,7 +24,7 @@ export function Hero() {
           className="relative mx-auto mb-10"
           style={{ maxWidth: "400px" }}
         >
-          {/* Ambient glow halo — spreads behind the logo */}
+          {/* Ambient glow halo */}
           <div
             className="absolute pointer-events-none"
             aria-hidden="true"
@@ -35,12 +35,12 @@ export function Hero() {
               filter: "blur(40px)",
             }}
           />
-          {/* Logo image — rounded corners + layered glow shadow */}
+          {/* Logo image */}
           <Image
-            src="/LP 4K Logo.png"
-            alt="LaunchPoint Studio — custom web design"
-            width={480}
-            height={480}
+            src="/LP 4k Cropped.png"
+            alt="LaunchPoint Studio logo, custom web design for small businesses"
+            width={1024}
+            height={1024}
             priority
             className="relative mx-auto w-full rounded-3xl overflow-hidden"
             style={{
@@ -101,8 +101,8 @@ export function Hero() {
             fontWeight: 300,
           }}
         >
-          Custom websites for small businesses that need to look professional, launch fast, and actually convert.{" "}
-          <span className="font-medium text-white">$1,000 flat. Live in under 3 weeks.</span>
+          Professional websites for small businesses.{" "}
+          <span className="font-medium text-white">Built fast. Built right.</span>
         </motion.p>
 
         {/* CTA */}

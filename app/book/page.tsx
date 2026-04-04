@@ -2,23 +2,26 @@ import type { Metadata } from "next";
 import { GeometricBackground } from "@/components/GeometricBackground";
 
 export const metadata: Metadata = {
-  title: "Book a Consultation",
+  title: "Book a Free Consultation",
   description:
-    "Schedule a free 30-minute call with LaunchPoint Studio. No pitch, no pressure — just a clear plan for your website.",
+    "Schedule a free 30-minute consultation. We'll learn about your business, recommend a package, and map out your project. No pressure, no commitment.",
+  alternates: {
+    canonical: "https://www.launchpointportal.com/book",
+  },
 };
 
 const trustPoints = [
   {
     label: "clock",
-    text: "30 minutes — no fluff, just a real conversation",
+    text: "30 minutes. No fluff, just a real conversation.",
   },
   {
     label: "check",
-    text: "You'll leave with a clear picture of what we'll build",
+    text: "You'll leave with a clear picture of what we'll build.",
   },
   {
     label: "shield",
-    text: "No commitment required — completely free",
+    text: "No commitment required. Completely free.",
   },
 ];
 
@@ -70,7 +73,7 @@ export default function BookPage() {
             className="mt-5 text-lg leading-relaxed text-silver-gray"
             style={{ fontFamily: "var(--font-outfit)", fontWeight: 300 }}
           >
-            It starts with a free 30-minute call. No pitch, no pressure — just a clear plan for your site.
+            Pick a time that works for you. 30 minutes, no pressure, and you&apos;ll walk away with a clear plan.
           </p>
         </div>
       </section>
@@ -142,7 +145,7 @@ export default function BookPage() {
                   className="mt-2 text-sm leading-relaxed text-silver-gray"
                   style={{ fontFamily: "var(--font-outfit)", fontWeight: 300 }}
                 >
-                  Spots are limited each month. If you&apos;re considering a new site, the best time to reach out is now.
+                  We take on a limited number of projects each month. If you&apos;re thinking about a new site, now&apos;s a good time to reach out.
                 </p>
               </div>
 

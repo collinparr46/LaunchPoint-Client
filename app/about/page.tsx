@@ -4,9 +4,12 @@ import { BookCTA } from "@/components/sections/BookCTA";
 import { GeometricBackground } from "@/components/GeometricBackground";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About LaunchPoint Studio | Tulsa Web Designer",
   description:
-    "LaunchPoint Studio is a Tulsa-based web design studio run by Collin Parr. Direct-to-client, no agencies, no handoffs.",
+    "Founded by Collin Parr in Tulsa, Oklahoma. We build conversion-focused websites for small businesses and freelancers nationwide.",
+  alternates: {
+    canonical: "https://www.launchpointportal.com/about",
+  },
 };
 
 export default function AboutPage() {
@@ -33,7 +36,7 @@ export default function AboutPage() {
             className="mt-5 text-lg leading-relaxed text-silver-gray"
             style={{ fontFamily: "var(--font-outfit)", fontWeight: 300 }}
           >
-            Tulsa-based. Developer-owned. Built on the belief that every small business deserves a world-class web presence.
+            Tulsa-based. Developer-owned. One person, one project, no runaround.
           </p>
         </div>
       </section>

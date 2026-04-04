@@ -13,7 +13,7 @@ export function ProjectShowcase() {
         </span>
         <h3 className="mt-3 text-xl font-bold text-[#E2E2F0]">Cuts by Cate</h3>
         <p className="mt-1 text-sm text-[#8888AA]">
-          Portfolio &amp; booking site — Tulsa, OK
+          Portfolio &amp; booking site, Tulsa, OK
         </p>
 
         {/* Browser chrome + iframe preview */}

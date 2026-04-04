@@ -4,9 +4,12 @@ import { BookCTA } from "@/components/sections/BookCTA";
 import { GeometricBackground } from "@/components/GeometricBackground";
 
 export const metadata: Metadata = {
-  title: "Process",
+  title: "Our Process",
   description:
-    "See how LaunchPoint takes your project from first call to live site in three clear steps — consult, build, launch.",
+    "From discovery call to launch day in under 3 weeks. See how we design, build, and deliver your website step by step.",
+  alternates: {
+    canonical: "https://www.launchpointportal.com/process",
+  },
 };
 
 export default function ProcessPage() {

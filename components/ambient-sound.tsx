@@ -19,7 +19,7 @@ function buildAudio(): AudioNodes {
   gain.connect(ctx.destination);
 
   // Three detuned sine waves for a soft ambient pad
-  const freqs = [55, 82.5, 110]; // A1, E2, A2 — open fifth + root
+  const freqs = [55, 82.5, 110]; // A1, E2, A2 (open fifth + root)
   const nodes = freqs.map((freq, i) => {
     const osc = ctx.createOscillator();
     osc.type = "sine";

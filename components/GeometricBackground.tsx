@@ -62,7 +62,7 @@ export function GeometricBackground({ variant = "hero" }: GeometricBackgroundPro
       className="absolute inset-0 overflow-hidden pointer-events-none"
       aria-hidden="true"
     >
-      {/* LP Visual Pattern.png — primary crystal background */}
+      {/* LP Visual Pattern.png crystal background */}
       <div
         className="absolute inset-0"
         style={{

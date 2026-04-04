@@ -31,7 +31,7 @@ export function ShootingStars() {
         left: randomBetween(10, 90),
         // Slight downward diagonal
         angle: randomBetween(20, 40),
-        // Very slow — 6 to 12 seconds per streak
+        // Very slow, 6 to 12 seconds per streak
         duration: randomBetween(6, 12),
         // Stagger so they don't all fire at once
         delay: randomBetween(0, 30),

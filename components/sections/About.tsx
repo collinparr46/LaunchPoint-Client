@@ -70,7 +70,7 @@ export function About() {
             className="mt-8 max-w-2xl leading-relaxed text-silver-gray"
             style={{ fontFamily: "var(--font-outfit)", fontWeight: 300 }}
           >
-            LaunchPoint is a Tulsa-based web design studio run by Collin Parr — a developer who works directly with every client from first call to final launch. No account managers, no outsourcing, no handoffs. Just clean, intentional work built around what your business actually needs.
+            I&apos;m Collin Parr, and I run LaunchPoint out of Tulsa, Oklahoma. When you hire me, you work with me. No account managers, no outsourcing, no handoffs. I handle your project from the first call to launch day, and I stick around after to make sure everything runs smooth.
           </p>
         </motion.div>
 

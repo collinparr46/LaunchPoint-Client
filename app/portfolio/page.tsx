@@ -6,7 +6,10 @@ import { GeometricBackground } from "@/components/GeometricBackground";
 export const metadata: Metadata = {
   title: "Portfolio",
   description:
-    "See the work LaunchPoint has built for real small businesses in Tulsa and beyond. Custom websites that convert.",
+    "Real websites we've built for real businesses. See live examples of our work for hairstylists, local businesses, and more.",
+  alternates: {
+    canonical: "https://www.launchpointportal.com/portfolio",
+  },
 };
 
 export default function PortfolioPage() {
@@ -33,7 +36,7 @@ export default function PortfolioPage() {
             className="mt-5 text-lg leading-relaxed text-silver-gray"
             style={{ fontFamily: "var(--font-outfit)", fontWeight: 300 }}
           >
-            Every site is live, production-built, and owned by a real business owner who trusted us to deliver.
+            Every site here is live and owned by a real business owner who trusted us to deliver.
           </p>
         </div>
       </section>

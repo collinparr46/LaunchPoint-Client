@@ -68,7 +68,7 @@ export function RocketBackground() {
             </linearGradient>
           </defs>
 
-          {/* Smoke trail — long wide plume, stacked ellipses, slow drift/expand */}
+          {/* Smoke trail: long wide plume, stacked ellipses, slow drift/expand */}
           <g className="rocket-smoke-plume">
             <ellipse cx="40" cy="310" rx="34" ry="55" fill="url(#smokePlume)" className="rocket-smoke-a" />
             <ellipse cx="40" cy="345" rx="38" ry="60" fill="url(#smokePlume)" className="rocket-smoke-b" />
@@ -76,7 +76,7 @@ export function RocketBackground() {
             <ellipse cx="40" cy="415" rx="40" ry="58" fill="url(#smokePlume)" className="rocket-smoke-d" />
           </g>
 
-          {/* Flame — layered ellipses, smooth breathe/pulse (2–4s) */}
+          {/* Flame: layered ellipses, smooth breathe/pulse */}
           <g transform="translate(40, 268)">
             <ellipse cx="0" cy="45" rx="18" ry="50" fill="url(#engineGlow)" className="rocket-flame-layer rocket-flame-1" />
             <ellipse cx="0" cy="55" rx="22" ry="58" fill="url(#engineGlow)" className="rocket-flame-layer rocket-flame-2" />
@@ -85,7 +85,7 @@ export function RocketBackground() {
             <ellipse cx="0" cy="85" rx="19" ry="48" fill="url(#engineGlow)" className="rocket-flame-layer rocket-flame-5" />
           </g>
 
-          {/* Rocket body — sleek, pointed nose, clean fins */}
+          {/* Rocket body */}
           <path
             d="M40 0 L56 44 L56 60 L40 54 L24 60 L24 44 Z"
             fill="url(#rocketMetallic)"

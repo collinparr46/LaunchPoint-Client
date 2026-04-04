@@ -8,8 +8,6 @@ export function BookCTA() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
-  const currentMonth = new Date().toLocaleString("default", { month: "long" });
-
   return (
     <section
       id="book"
@@ -48,7 +46,7 @@ export function BookCTA() {
           className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-silver-gray"
           style={{ fontFamily: "var(--font-outfit)", fontWeight: 300 }}
         >
-          It starts with a free 30-minute call. No pitch, no pressure — just a clear plan.
+          It starts with a free 30-minute call. No pitch, no pressure. Just a clear plan for your site.
         </motion.p>
 
         <motion.div
@@ -75,7 +73,7 @@ export function BookCTA() {
           className="mt-5 text-sm"
           style={{ color: "rgba(255,255,255,0.5)", fontFamily: "var(--font-outfit)" }}
         >
-          Currently accepting new clients for {currentMonth} — limited spots available.
+          Currently accepting new clients for April.
         </motion.p>
       </div>
     </section>

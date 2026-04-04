@@ -67,7 +67,7 @@ export function Navbar() {
           className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-6 lg:px-8"
         >
           {/* Logo */}
-          <Link href="/" aria-label="LaunchPoint Studio — home" className="flex items-center">
+          <Link href="/" aria-label="LaunchPoint Studio home" className="flex items-center">
             <Image
               src="/LP Icon No BG.png"
               alt="LaunchPoint Studio"
@@ -78,7 +78,7 @@ export function Navbar() {
             />
           </Link>
 
-          {/* Desktop links — centered */}
+          {/* Desktop links */}
           <div className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 md:flex">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
@@ -117,7 +117,7 @@ export function Navbar() {
             Schedule a Consult
           </a>
 
-          {/* Hamburger — mobile only */}
+          {/* Hamburger (mobile only) */}
           <button
             type="button"
             onClick={() => setOpen((o) => !o)}

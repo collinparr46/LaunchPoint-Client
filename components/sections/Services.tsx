@@ -1,7 +1,16 @@
 "use client";
 
+import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+
+function Check() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#33A1DE" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="shrink-0 mt-0.5">
+      <polyline points="20 6 9 17 4 12" />
+    </svg>
+  );
+}
 
 function PortfolioIcon() {
   return (
@@ -21,38 +30,56 @@ function RocketIcon() {
   );
 }
 
-function CalendarIcon() {
+function CustomIcon() {
   return (
     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-      <rect x="6" y="10" width="36" height="32" rx="3" stroke="#33A1DE" strokeWidth="1.5" fill="none" />
-      <path d="M6 18H42" stroke="#33A1DE" strokeWidth="1.5" />
-      <path d="M16 6V12M32 6V12" stroke="#33A1DE" strokeWidth="1.5" strokeLinecap="round" />
-      <rect x="13" y="24" width="6" height="6" rx="1" fill="#33A1DE" fillOpacity="0.4" />
-      <rect x="21" y="24" width="6" height="6" rx="1" fill="#33A1DE" fillOpacity="0.4" />
-      <rect x="29" y="24" width="6" height="6" rx="1" fill="#33A1DE" fillOpacity="0.4" />
+      <rect x="8" y="8" width="32" height="32" rx="4" stroke="#33A1DE" strokeWidth="1.5" fill="none" />
+      <path d="M18 20L14 24L18 28" stroke="#33A1DE" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M30 20L34 24L30 28" stroke="#33A1DE" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M26 16L22 32" stroke="#33A1DE" strokeWidth="1.5" strokeLinecap="round" />
     </svg>
   );
 }
 
-const services = [
+const serviceCards = [
   {
     Icon: PortfolioIcon,
-    title: "Portfolio & Brand Sites",
+    title: "Portfolio & Booking Sites",
+    audience: "For hairstylists, trainers, artists, photographers, coaches, and freelancers.",
     description:
-      "Your work deserves a stage. We build portfolio sites that make clients stop scrolling and start reaching out.",
+      "Your work front and center. Clients book directly from your site. You update it yourself whenever you want.",
+    cta: "View Pricing",
+    href: "/pricing",
+    external: false,
   },
   {
     Icon: RocketIcon,
-    title: "Landing & Home Pages",
+    title: "Full Business Websites",
+    audience: "For small businesses ready for a real online presence.",
     description:
-      "First impressions that convert. Clean, fast, SEO-ready pages that turn visitors into customers.",
+      "Homepage, services, testimonials, contact forms, and booking. Everything a growing business needs in one place.",
+    cta: "View Pricing",
+    href: "/pricing",
+    external: false,
   },
   {
-    Icon: CalendarIcon,
-    title: "Booking & Lead Capture",
+    Icon: CustomIcon,
+    title: "Custom & E-Commerce",
+    audience: "For businesses that need online stores, payments, or complex integrations.",
     description:
-      "Stop losing leads. Integrated booking, contact forms, and lead capture built into every site.",
+      "We scope it out together in a free consultation and build exactly what you need. No cookie-cutter solutions.",
+    cta: "Book a Consult",
+    href: "https://calendly.com/collin-parr46/30min",
+    external: true,
   },
+];
+
+const commonFeatures = [
+  "Mobile-responsive design",
+  "SEO foundations",
+  "Admin dashboard for content management",
+  "Revision rounds",
+  "Optional managed hosting",
 ];
 
 export function Services() {
@@ -86,15 +113,22 @@ export function Services() {
         >
           What We Build
         </h2>
+        <p
+          className="mt-4 max-w-2xl text-lg leading-relaxed text-silver-gray"
+          style={{ fontFamily: "var(--font-outfit)", fontWeight: 300 }}
+        >
+          Every site is designed from scratch around your business. No templates, no shortcuts.
+        </p>
 
+        {/* Service cards */}
         <div className="mt-16 grid gap-8 md:grid-cols-3">
-          {services.map(({ Icon, title, description }, i) => (
+          {serviceCards.map(({ Icon, title, audience, description, cta, href, external }, i) => (
             <motion.div
               key={title}
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.15 }}
-              className="glass-card p-8"
+              className="glass-card flex flex-col p-8"
             >
               <div className="mb-6">
                 <Icon />
@@ -106,13 +140,56 @@ export function Services() {
                 {title}
               </h3>
               <p
-                className="mt-4 leading-relaxed text-silver-gray"
+                className="mt-2 text-sm text-photon-blue font-medium"
+                style={{ fontFamily: "var(--font-outfit)" }}
+              >
+                {audience}
+              </p>
+              <p
+                className="mt-4 flex-1 leading-relaxed text-silver-gray"
                 style={{ fontFamily: "var(--font-outfit)", fontWeight: 300 }}
               >
                 {description}
               </p>
+              {external ? (
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-photon-glow mt-6 block w-full rounded-lg bg-photon-blue py-3 text-center text-sm font-semibold text-white"
+                  style={{ fontFamily: "var(--font-outfit)" }}
+                >
+                  {cta} →
+                </a>
+              ) : (
+                <Link
+                  href={href}
+                  className="btn-photon-glow mt-6 block w-full rounded-lg bg-photon-blue py-3 text-center text-sm font-semibold text-white"
+                  style={{ fontFamily: "var(--font-outfit)" }}
+                >
+                  {cta} →
+                </Link>
+              )}
             </motion.div>
           ))}
+        </div>
+
+        {/* Common features */}
+        <div className="mt-20 text-center">
+          <h3
+            className="text-xl font-semibold text-white"
+            style={{ fontFamily: "var(--font-outfit)" }}
+          >
+            Included in Every Package
+          </h3>
+          <ul className="mx-auto mt-6 grid max-w-2xl gap-3 sm:grid-cols-2">
+            {commonFeatures.map((f) => (
+              <li key={f} className="flex items-center gap-3 text-sm text-silver-gray" style={{ fontFamily: "var(--font-outfit)", fontWeight: 300 }}>
+                <Check />
+                {f}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

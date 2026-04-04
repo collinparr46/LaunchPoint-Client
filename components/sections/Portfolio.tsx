@@ -27,14 +27,13 @@ const projects = [
     author: "— Catelin Parr, Hairstylist, Tulsa OK",
   },
   {
-    badge: "LIVE",
+    badge: "CONCEPT",
     title: "Riverside Air Comfort",
     description:
-      "HVAC specialist website for a Tulsa-based heating and cooling company. Built to generate calls and establish credibility.",
+      "Concept build demonstrating a service-industry website for an HVAC company. Built to showcase how LaunchPoint handles lead generation and credibility for home service businesses.",
     href: "https://riverside-air-comfort.vercel.app",
-    quote:
-      "We needed a site that actually looked like a real business. LaunchPoint delivered something clean and professional in under two weeks. Already getting calls from it.",
-    author: "— Marcus Webb, Owner, Riverside Air Comfort",
+    quote: null,
+    author: null,
   },
 ];
 
@@ -66,15 +65,15 @@ export function Portfolio() {
               transition={{ duration: 0.5, delay: i * 0.2 }}
               className="glass-card p-8 md:grid md:grid-cols-2 md:gap-12 md:p-10"
             >
-              {/* Left — project info */}
+              {/* Project info */}
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="live-dot h-2 w-2 rounded-full bg-emerald-400 inline-block" />
+                  <span className={`h-2 w-2 rounded-full inline-block ${badge === "LIVE" ? "live-dot bg-emerald-400" : "bg-photon-blue"}`} />
                   <span
-                    className="text-xs font-medium uppercase tracking-wider text-emerald-400"
+                    className={`text-xs font-medium uppercase tracking-wider ${badge === "LIVE" ? "text-emerald-400" : "text-photon-blue"}`}
                     style={{ fontFamily: "var(--font-outfit)" }}
                   >
-                    {badge}
+                    {badge === "LIVE" ? "Live" : "Concept Build"}
                   </span>
                 </div>
                 <h3
@@ -100,25 +99,36 @@ export function Portfolio() {
                 </a>
               </div>
 
-              {/* Right — testimonial */}
+              {/* Testimonial or description */}
               <div className="mt-8 md:mt-0">
                 <div
                   className="h-full rounded-lg p-6"
                   style={{ borderLeft: "2px solid #33A1DE", background: "rgba(51,161,222,0.04)" }}
                 >
-                  <Stars />
-                  <blockquote
-                    className="mt-4 italic leading-relaxed text-silver-gray"
-                    style={{ fontFamily: "var(--font-outfit)", fontWeight: 300 }}
-                  >
-                    <p>&ldquo;{quote}&rdquo;</p>
-                    <footer
-                      className="mt-4 text-sm not-italic text-silver-gray"
-                      style={{ opacity: 0.7 }}
+                  {quote ? (
+                    <>
+                      <Stars />
+                      <blockquote
+                        className="mt-4 italic leading-relaxed text-silver-gray"
+                        style={{ fontFamily: "var(--font-outfit)", fontWeight: 300 }}
+                      >
+                        <p>&ldquo;{quote}&rdquo;</p>
+                        <footer
+                          className="mt-4 text-sm not-italic text-silver-gray"
+                          style={{ opacity: 0.7 }}
+                        >
+                          {author}
+                        </footer>
+                      </blockquote>
+                    </>
+                  ) : (
+                    <p
+                      className="leading-relaxed text-silver-gray italic"
+                      style={{ fontFamily: "var(--font-outfit)", fontWeight: 300 }}
                     >
-                      {author}
-                    </footer>
-                  </blockquote>
+                      Concept build demonstrating a service-industry website.
+                    </p>
+                  )}
                 </div>
               </div>
             </motion.div>
@@ -129,7 +139,7 @@ export function Portfolio() {
           className="mt-10 text-center text-sm italic text-silver-gray"
           style={{ fontFamily: "var(--font-outfit)", fontWeight: 300 }}
         >
-          More projects launching soon — currently accepting new clients.
+          More projects launching soon. Currently accepting new clients.
         </p>
       </div>
     </section>

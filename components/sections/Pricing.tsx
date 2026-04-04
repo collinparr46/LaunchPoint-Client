@@ -11,20 +11,71 @@ function Check() {
   );
 }
 
-const websiteFeatures = [
-  "Custom design tailored to your brand",
-  "Mobile-responsive on every device",
-  "SEO foundations built in",
-  "Booking or lead capture integration",
-  "Up to 5 pages",
-  "2 revision rounds",
-  "Live in under 3 weeks",
+const tiers = [
+  {
+    name: "The Icon",
+    price: "$500",
+    priceNote: "one-time",
+    monthly: "+ $24.99/mo optional managed hosting",
+    tagline: "Perfect for freelancers and solo creatives.",
+    features: [
+      "Up to 3 custom-designed pages",
+      "Mobile-responsive on every device",
+      "Portfolio or gallery showcase",
+      "Online booking integration",
+      "Admin dashboard to manage content",
+      "SEO foundations built in",
+      "2 revision rounds",
+      "Live in under 2 weeks",
+    ],
+    cta: "Get Started",
+    highlighted: false,
+  },
+  {
+    name: "The Streamline",
+    price: "$1,000",
+    priceNote: "one-time",
+    monthly: "+ $49.99/mo optional managed hosting",
+    tagline: "The full online presence for growing businesses.",
+    features: [
+      "Up to 6 custom-designed pages",
+      "Mobile-responsive on every device",
+      "Services or product showcase",
+      "Testimonials and reviews section",
+      "Contact forms and booking integration",
+      "Admin dashboard to manage content",
+      "SEO foundations built in",
+      "2 revision rounds",
+      "Live in under 3 weeks",
+    ],
+    cta: "Get Started",
+    highlighted: true,
+  },
+  {
+    name: "The Custom",
+    price: "Starting at $1,500",
+    priceNote: "one-time",
+    monthly: "+ $79.99/mo optional managed hosting",
+    tagline: "For businesses with unique needs.",
+    features: [
+      "Fully scoped in your free consultation",
+      "E-commerce and payment integration",
+      "Complex functionality and custom features",
+      "Unlimited pages",
+      "Admin dashboard to manage content",
+      "SEO foundations built in",
+      "Advanced integrations (Stripe, scheduling, inventory)",
+      "Dedicated project timeline",
+    ],
+    cta: "Book a Consult",
+    highlighted: false,
+  },
 ];
 
 const hostingFeatures = [
-  "Hosting & domain management",
+  "Hosting and domain management",
   "SSL certificate included",
-  "Security & software updates",
+  "Security and software updates",
   "Uptime monitoring",
   "Minor content edits (up to 1 hr/month)",
   "Priority support",
@@ -36,7 +87,7 @@ export function Pricing() {
 
   return (
     <section id="pricing" aria-labelledby="pricing-heading" className="relative px-6 py-28 lg:px-8">
-      <div ref={ref} className="mx-auto max-w-5xl">
+      <div ref={ref} className="mx-auto max-w-7xl">
         <div className="text-center">
           <p className="mb-3 text-xs font-medium uppercase tracking-[0.2em] text-silver-gray" style={{ fontFamily: "var(--font-outfit)" }}>
             Pricing
@@ -51,96 +102,84 @@ export function Pricing() {
           </h2>
         </div>
 
-        <div className="mt-16 grid gap-8 md:grid-cols-2">
-
-          {/* Card 1 — Website Build */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="flex flex-col rounded-xl p-8"
-            style={{
-              background: "#1A2D4F",
-              border: "1px solid rgba(51,161,222,0.3)",
-              boxShadow: "0 0 40px rgba(51,161,222,0.1)",
-            }}
-          >
-            <div>
-              <p className="text-5xl font-bold text-white" style={{ fontFamily: "var(--font-outfit)" }}>
-                $1,000
-              </p>
-              <p className="mt-1 text-sm text-silver-gray" style={{ fontFamily: "var(--font-outfit)", fontWeight: 300 }}>
-                one-time
-              </p>
-              <p className="mt-2 text-photon-blue text-sm font-medium" style={{ fontFamily: "var(--font-outfit)" }}>
-                Everything you need to launch.
-              </p>
-            </div>
-
-            <ul className="mt-8 flex-1 space-y-3">
-              {websiteFeatures.map((f) => (
-                <li key={f} className="flex items-start gap-3 text-sm text-silver-gray" style={{ fontFamily: "var(--font-outfit)", fontWeight: 300 }}>
-                  <Check />
-                  {f}
-                </li>
-              ))}
-            </ul>
-
-            <a
-              href="https://calendly.com/collin-parr46/30min"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-photon-glow mt-8 block w-full rounded-lg bg-photon-blue py-3 text-center text-sm font-semibold text-white"
-              style={{ fontFamily: "var(--font-outfit)" }}
+        {/* Three-tier grid */}
+        <div className="mt-16 grid gap-8 md:grid-cols-3">
+          {tiers.map(({ name, price, priceNote, monthly, tagline, features, cta, highlighted }, i) => (
+            <motion.div
+              key={name}
+              initial={{ opacity: 0, y: 30 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: i * 0.15 }}
+              className="relative flex flex-col rounded-xl p-8"
+              style={{
+                background: highlighted ? "#1A2D4F" : "rgba(26,45,79,0.4)",
+                border: highlighted
+                  ? "1px solid rgba(51,161,222,0.5)"
+                  : "1px solid rgba(195,199,201,0.15)",
+                boxShadow: highlighted
+                  ? "0 0 50px rgba(51,161,222,0.15)"
+                  : "none",
+              }}
             >
-              Get Started
-            </a>
-          </motion.div>
+              {/* Most Popular badge */}
+              {highlighted && (
+                <span
+                  className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-4 py-1 text-xs font-semibold text-white"
+                  style={{
+                    background: "#33A1DE",
+                    fontFamily: "var(--font-outfit)",
+                  }}
+                >
+                  Most Popular
+                </span>
+              )}
 
-          {/* Card 2 — Managed Hosting */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.25 }}
-            className="flex flex-col rounded-xl p-8"
-            style={{
-              background: "rgba(26,45,79,0.4)",
-              border: "1px solid rgba(195,199,201,0.15)",
-            }}
-          >
-            <div>
-              <div className="flex items-baseline gap-2">
-                <p className="text-4xl font-bold text-white" style={{ fontFamily: "var(--font-outfit)" }}>
-                  $49.99
+              <div>
+                <h3
+                  className="text-lg font-semibold text-white"
+                  style={{ fontFamily: "var(--font-outfit)" }}
+                >
+                  {name}
+                </h3>
+                <p className="mt-4 text-4xl font-bold text-white" style={{ fontFamily: "var(--font-outfit)" }}>
+                  {price}
                 </p>
-                <span className="text-silver-gray text-sm" style={{ fontFamily: "var(--font-outfit)", fontWeight: 300 }}>/month</span>
+                <p className="mt-1 text-sm text-silver-gray" style={{ fontFamily: "var(--font-outfit)", fontWeight: 300 }}>
+                  {priceNote}
+                </p>
+                <p className="mt-2 text-xs text-silver-gray" style={{ fontFamily: "var(--font-outfit)", fontWeight: 300 }}>
+                  {monthly}
+                </p>
+                <p className="mt-3 text-sm text-photon-blue font-medium" style={{ fontFamily: "var(--font-outfit)" }}>
+                  {tagline}
+                </p>
               </div>
-              <span
-                className="mt-2 inline-block rounded-full px-3 py-1 text-xs font-medium text-white"
-                style={{ background: "rgba(51,161,222,0.18)", border: "1px solid rgba(51,161,222,0.35)", color: "#33A1DE", fontFamily: "var(--font-outfit)" }}
+
+              <ul className="mt-8 flex-1 space-y-3">
+                {features.map((f) => (
+                  <li key={f} className="flex items-start gap-3 text-sm text-silver-gray" style={{ fontFamily: "var(--font-outfit)", fontWeight: 300 }}>
+                    <Check />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+
+              <a
+                href="https://calendly.com/collin-parr46/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`mt-8 block w-full rounded-lg py-3 text-center text-sm font-semibold text-white ${
+                  highlighted ? "btn-gradient-glow" : "btn-photon-glow bg-photon-blue"
+                }`}
+                style={{ fontFamily: "var(--font-outfit)" }}
               >
-                Recommended
-              </span>
-              <p className="mt-3 text-sm text-silver-gray" style={{ fontFamily: "var(--font-outfit)", fontWeight: 300 }}>
-                Your site stays fast, secure, and online — so you can focus on your business.
-              </p>
-            </div>
-
-            <ul className="mt-8 flex-1 space-y-3">
-              {hostingFeatures.map((f) => (
-                <li key={f} className="flex items-start gap-3 text-sm text-silver-gray" style={{ fontFamily: "var(--font-outfit)", fontWeight: 300 }}>
-                  <Check />
-                  {f}
-                </li>
-              ))}
-            </ul>
-
-            <p className="mt-8 text-center text-xs text-silver-gray" style={{ fontFamily: "var(--font-outfit)", fontWeight: 300 }}>
-              You own your site. Host it with us for hands-off maintenance, or take it anywhere.
-            </p>
-          </motion.div>
+                {cta}
+              </a>
+            </motion.div>
+          ))}
         </div>
 
+        {/* Trust text */}
         <div
           className="mt-10 rounded-lg px-6 py-4 text-center"
           style={{ background: "rgba(51,161,222,0.05)", border: "1px solid rgba(51,161,222,0.1)" }}
@@ -149,11 +188,29 @@ export function Pricing() {
             className="text-sm font-medium text-white"
             style={{ fontFamily: "var(--font-outfit)" }}
           >
-            Cancel hosting anytime — you keep your site.
+            You own your site. Host it with us for hands-off maintenance, or take it anywhere.
           </p>
           <p className="mt-1 text-xs text-silver-gray" style={{ fontFamily: "var(--font-outfit)", fontWeight: 300 }}>
-            No retainers. No hidden fees. No lock-in.
+            Cancel hosting anytime. You keep your site.
           </p>
+        </div>
+
+        {/* Managed hosting breakdown */}
+        <div className="mt-16 text-center">
+          <h3
+            className="text-xl font-semibold text-white"
+            style={{ fontFamily: "var(--font-outfit)" }}
+          >
+            What&apos;s Included in Managed Hosting?
+          </h3>
+          <ul className="mx-auto mt-6 grid max-w-2xl gap-3 sm:grid-cols-2">
+            {hostingFeatures.map((f) => (
+              <li key={f} className="flex items-center gap-3 text-sm text-silver-gray" style={{ fontFamily: "var(--font-outfit)", fontWeight: 300 }}>
+                <Check />
+                {f}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

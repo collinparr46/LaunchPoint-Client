@@ -6,7 +6,10 @@ import { GeometricBackground } from "@/components/GeometricBackground";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Simple, transparent pricing. $1,000 flat for a custom website build. Optional managed hosting at $49.99/month. No hidden fees.",
+    "Three packages: The Icon at $500 for freelancers, The Streamline at $1,000 for small businesses, and Custom builds starting at $1,500. No contracts, no hidden fees.",
+  alternates: {
+    canonical: "https://www.launchpointportal.com/pricing",
+  },
 };
 
 export default function PricingPage() {
@@ -33,7 +36,7 @@ export default function PricingPage() {
             className="mt-5 text-lg leading-relaxed text-silver-gray"
             style={{ fontFamily: "var(--font-outfit)", fontWeight: 300 }}
           >
-            One flat rate. No retainers. No surprises. You&apos;ll know exactly what you&apos;re getting before you commit.
+            Straightforward pricing. No retainers, no surprises. You know what you&apos;re paying before we start.
           </p>
         </div>
       </section>

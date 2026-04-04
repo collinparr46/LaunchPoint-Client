@@ -24,65 +24,96 @@ const siteUrl = "https://www.launchpointportal.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "LaunchPoint Studio — Custom Websites for Small Business | Tulsa, OK",
+    default: "LaunchPoint Studio | Web Design for Small Businesses",
     template: "%s | LaunchPoint Studio",
   },
   description:
-    "Custom websites for small businesses. $1,000 flat rate, live in under 3 weeks. Tulsa-based web design studio serving clients nationwide.",
+    "Professional websites for small businesses starting at $500. Based in Tulsa, OK, serving nationwide.",
   keywords: [
-    "web design tulsa",
+    "web design",
     "small business website",
-    "custom website design",
+    "web development",
+    "Tulsa web design",
+    "freelancer website",
+    "hairstylist website",
+    "portfolio website",
+    "booking website",
     "affordable web design",
-    "tulsa web developer",
-    "freelancer website design",
-    "launchpoint studio",
+    "website builder for small business",
   ],
-  authors: [{ name: "Collin Parr", url: siteUrl }],
-  creator: "Collin Parr",
+  authors: [{ name: "LaunchPoint Studio" }],
+  creator: "LaunchPoint Studio",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "LaunchPoint Studio — Built to Launch. Built to Last.",
-    description:
-      "Custom websites for small businesses. $1,000 flat rate, live in under 3 weeks.",
-    url: siteUrl,
-    siteName: "LaunchPoint Studio",
     type: "website",
     locale: "en_US",
+    url: siteUrl,
+    siteName: "LaunchPoint Studio",
+    title: "LaunchPoint Studio | Web Design for Small Businesses",
+    description:
+      "Professional websites for small businesses starting at $500. Based in Tulsa, serving nationwide.",
     images: [
       {
-        url: "/og-image.png",
+        url: "/LP 4k Cropped.png",
         width: 1200,
         height: 630,
-        alt: "LaunchPoint Studio — Built to Launch. Built to Last.",
+        alt: "LaunchPoint Studio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "LaunchPoint Studio — Custom Websites for Small Business",
+    title: "LaunchPoint Studio | Web Design for Small Businesses",
     description:
-      "Custom websites for small businesses. $1,000 flat rate, live in under 3 weeks.",
-    images: ["/og-image.png"],
+      "Professional websites for small businesses starting at $500. Based in Tulsa, serving nationwide.",
+    images: ["/LP 4k Cropped.png"],
   },
-  robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large" as const,
+      "max-snippet": -1,
+    },
+  },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  name: "LaunchPoint Studio, LLC",
-  description: "Custom web design and development for small businesses",
+  name: "LaunchPoint Studio",
   url: siteUrl,
-  areaServed: "US",
+  logo: `${siteUrl}/LP%20Icon%20No%20BG.png`,
+  description:
+    "Professional web design and development for small businesses and freelancers. Based in Tulsa, Oklahoma, serving clients nationwide.",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Tulsa",
     addressRegion: "OK",
     addressCountry: "US",
   },
-  priceRange: "$1,000",
-  founder: { "@type": "Person", name: "Collin Parr" },
+  areaServed: {
+    "@type": "Country",
+    name: "United States",
+  },
+  priceRange: "$500 - $5000",
+  serviceType: [
+    "Web Design",
+    "Web Development",
+    "E-Commerce Development",
+    "SEO",
+  ],
+  sameAs: [
+    "https://www.instagram.com/launchpoint.studio/",
+    "https://www.facebook.com/profile.php?id=61577425354377",
+  ],
+  founder: {
+    "@type": "Person",
+    name: "Collin Parr",
+  },
 };
 
 export default function RootLayout({

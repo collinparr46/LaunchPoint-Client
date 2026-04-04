@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Instagram } from "lucide-react";
+import { Instagram, Facebook } from "lucide-react";
 
 const footerLinks = [
   { label: "Services", href: "/services" },
@@ -23,7 +23,7 @@ export function Footer() {
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col items-center justify-between gap-8 sm:flex-row">
           {/* Logo */}
-          <Link href="/" aria-label="LaunchPoint Studio — home">
+          <Link href="/" aria-label="LaunchPoint Studio home">
             <Image
               src="/LP Icon No BG.png"
               alt="LaunchPoint Studio"
@@ -49,7 +49,7 @@ export function Footer() {
         </div>
 
         {/* Social icons */}
-        <div className="mt-8 flex justify-center">
+        <div className="mt-8 flex justify-center gap-4">
           <a
             href="https://www.instagram.com/launchpoint.studio/"
             target="_blank"
@@ -59,6 +59,16 @@ export function Footer() {
             style={{ opacity: 0.7 }}
           >
             <Instagram size={20} aria-hidden="true" />
+          </a>
+          <a
+            href="https://www.facebook.com/profile.php?id=61577425354377"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LaunchPoint Studio on Facebook"
+            className="rounded-md p-2 text-silver-gray transition-all duration-200 hover:text-photon-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-photon-blue"
+            style={{ opacity: 0.7 }}
+          >
+            <Facebook size={20} aria-hidden="true" />
           </a>
         </div>
 
