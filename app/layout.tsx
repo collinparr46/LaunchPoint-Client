@@ -54,7 +54,7 @@ export const metadata: Metadata = {
       "Professional websites for small businesses starting at $500. Based in Tulsa, serving nationwide.",
     images: [
       {
-        url: "/LP 4k Cropped.png",
+        url: "/LP 4K Prime.png",
         width: 1200,
         height: 630,
         alt: "LaunchPoint Studio",
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     title: "LaunchPoint Studio | Web Design for Small Businesses",
     description:
       "Professional websites for small businesses starting at $500. Based in Tulsa, serving nationwide.",
-    images: ["/LP 4k Cropped.png"],
+    images: ["/LP 4K Prime.png"],
   },
   robots: {
     index: true,

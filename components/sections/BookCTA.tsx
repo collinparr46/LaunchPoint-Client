@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { GeometricBackground } from "@/components/GeometricBackground";
+import { AVAILABILITY_MONTH } from "@/lib/siteConfig";
 
 export function BookCTA() {
   const ref = useRef<HTMLDivElement>(null);
@@ -73,7 +74,7 @@ export function BookCTA() {
           className="mt-5 text-sm"
           style={{ color: "rgba(255,255,255,0.5)", fontFamily: "var(--font-outfit)" }}
         >
-          Currently accepting new clients for April.
+          Currently accepting new clients for {AVAILABILITY_MONTH}.
         </motion.p>
       </div>
     </section>

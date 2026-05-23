@@ -37,8 +37,8 @@ export function Hero() {
           />
           {/* Logo image */}
           <Image
-            src="/LP 4k Cropped.png"
-            alt="LaunchPoint Studio logo, custom web design for small businesses"
+            src="/LP 4K Prime.png"
+            alt="LaunchPoint Studio rocket logo with glowing orbital rings"
             width={1024}
             height={1024}
             priority

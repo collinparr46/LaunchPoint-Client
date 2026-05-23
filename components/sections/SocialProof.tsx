@@ -11,10 +11,13 @@ const stats = [
 ];
 
 function CountUp({ target, suffix, started }: { target: number; suffix: string; started: boolean }) {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(target);
+  const hasAnimated = useRef(false);
 
   useEffect(() => {
-    if (!started) return;
+    if (!started || hasAnimated.current) return;
+    hasAnimated.current = true;
+    setCount(0);
     let start = 0;
     const duration = 1200;
     const step = 16;
